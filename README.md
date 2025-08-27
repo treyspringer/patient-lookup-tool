@@ -24,7 +24,7 @@ Patient_Lookup_Tool/ \
 ├── patients.db     # SQLite database (auto-generated after ingest) \
 ├── PatientData/    # Folder containing patient files (PDF/XML) \
 ├── patient_data.csv# Input CSV with demographic info \
-└── README.md       # Documentation \
+└── README.md       # Documentation 
 
 **Requirements**
 Python 3.8+
@@ -82,16 +82,16 @@ Uses SQLite (patients.db) as the backend.
 
 Table schema:
 
-CREATE TABLE patients(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        patient_id TEXT,
-        name TEXT,
-        ssn TEXT,
-        sex TEXT,
-        birth_date TEXT,
-        address TEXT,
-        path TEXT
-    )
+CREATE TABLE patients( \
+        id INTEGER PRIMARY KEY AUTOINCREMENT, \
+        patient_id TEXT, \
+        name TEXT, \
+        ssn TEXT, \
+        sex TEXT, \
+        birth_date TEXT, \
+        address TEXT, \
+        path TEXT \
+    ) \
 The path field holds all PDF file paths for each patient, separated by ;.
 
 
