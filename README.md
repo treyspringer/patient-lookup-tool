@@ -18,13 +18,13 @@ Provide a Tkinter GUI with double-click file opening.
 ---
 
 ### Project Structure
-Patient_Lookup_Tool/
-├── main.py         # Core logic: ingest CSV, search, open files (CLI)
-├── gui.py          # Tkinter-based GUI
-├── patients.db     # SQLite database (auto-generated after ingest)
-├── PatientData/    # Folder containing patient files (PDF/XML)
-├── patient_data.csv# Input CSV with demographic info
-└── README.md       # Documentation
+Patient_Lookup_Tool/ \
+├── main.py         # Core logic: ingest CSV, search, open files (CLI) \
+├── gui.py          # Tkinter-based GUI \
+├── patients.db     # SQLite database (auto-generated after ingest) \
+├── PatientData/    # Folder containing patient files (PDF/XML) \
+├── patient_data.csv# Input CSV with demographic info \
+└── README.md       # Documentation \
 
 **Requirements**
 Python 3.8+
@@ -60,10 +60,10 @@ Benchmark ingestion times (printed to console).
 
 Example interaction:
 
-> Search by ID or name: 2590972
-> Found patient: 2590972 - Abraham Xicotencatl-Munoz
-> Enter patient ID to open file: 2590972
-> Opening: PatientData/XI/AB/197905/2590972_XICOTENCATL-MUNOZ_ABRAHAM_59114785_Appointment_2018_08_09.pdf
+Search by ID or name: 2590972
+Found patient: 2590972 - Abraham Xicotencatl-Munoz
+Enter patient ID to open file: 2590972
+Opening: PatientData/XI/AB/197905/2590972_XICOTENCATL-MUNOZ_ABRAHAM_59114785_Appointment_2018_08_09.pdf
 
 3. Run the GUI
 
