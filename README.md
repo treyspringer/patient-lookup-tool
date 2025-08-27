@@ -49,17 +49,15 @@ Address
 
 2. Run the CLI
 
-From the project root:
-`python src/main.py`
+From the project root: \
+`python src/main.py` \
 
-Features:
-
+**Features:**
 Search patients by MRN or name. \
 Open patient files directly from search results. \
 Benchmark ingestion times (printed to console). \
 
-Example interaction: 
-
+**Example interaction:**
 Search by ID or name: 2590972 \
 Found patient: 2590972 - Abraham Xicotencatl-Munoz \
 Enter patient ID to open file: 2590972 \
