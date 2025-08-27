@@ -50,12 +50,12 @@ Address
 2. Run the CLI
 
 From the project root: \
-`python src/main.py` \
+`python src/main.py` 
 
 **Features:**
 Search patients by MRN or name. \
 Open patient files directly from search results. \
-Benchmark ingestion times (printed to console). \
+Benchmark ingestion times (printed to console). 
 
 **Example interaction:**
 Search by ID or name: 2590972 \
