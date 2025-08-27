@@ -23,7 +23,7 @@ Patient_Lookup_Tool/ \
 ├── gui.py          # Tkinter-based GUI \
 ├── patients.db     # SQLite database (auto-generated after ingest) \
 ├── PatientData/    # Folder containing patient files (PDF/XML) \
-├── patient_data.csv# Input CSV with demographic info \
+├── patient_data.csv # Input CSV with demographic info \
 └── README.md       # Documentation 
 
 **Requirements** \
@@ -58,7 +58,7 @@ Search patients by MRN or name. \
 Open patient files directly from search results. \
 Benchmark ingestion times (printed to console). \
 
-Example interaction: \
+Example interaction: 
 
 Search by ID or name: 2590972 \
 Found patient: 2590972 - Abraham Xicotencatl-Munoz \
@@ -73,12 +73,12 @@ Features:
 Search box to look up patients by MRN or name. \
 Results displayed in a table. \
 Double-click a patient → opens a pop-up listing all their associated PDFs. \
-Select a file → it opens in the system’s default PDF viewer. \
+Select a file → it opens in the system’s default PDF viewer. 
 
 ---
 
 ### Database
-Uses SQLite (patients.db) as the backend. \
+Uses SQLite (patients.db) as the backend. 
 
 Table schema: 
 
@@ -115,5 +115,5 @@ Inserts the rows into SQlite using executemany(...).
 SQLite Handling: \
 Each worker opens its own SQLite connection. \
 SQLite serializes the actual writes internally, but CPU-bound work (row prep, lookups) happens fully in parallel. \
-This keeps all CPU cores busy while avoiding database corruption. \
+This keeps all CPU cores busy while avoiding database corruption. 
 
