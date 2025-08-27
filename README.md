@@ -26,14 +26,14 @@ Patient_Lookup_Tool/ \
 ├── patient_data.csv# Input CSV with demographic info \
 └── README.md       # Documentation 
 
-**Requirements**
+**Requirements** \
 Python 3.8+
 
 Standard library only (uses sqlite3, os, csv, time, tkinter, subprocess)
 
 No external packages are required.
 
-**Usage**
+**Usage** 
 1. Prepare Data
 
 Place all patient files (PDFs, XMLs, etc.) inside the PatientData/ folder.
@@ -54,33 +54,33 @@ From the project root:
 
 Features:
 
-Search patients by MRN or name.
-Open patient files directly from search results.
-Benchmark ingestion times (printed to console).
+Search patients by MRN or name. \
+Open patient files directly from search results. \
+Benchmark ingestion times (printed to console). \
 
-Example interaction:
+Example interaction: \
 
-Search by ID or name: 2590972
-Found patient: 2590972 - Abraham Xicotencatl-Munoz
-Enter patient ID to open file: 2590972
+Search by ID or name: 2590972 \
+Found patient: 2590972 - Abraham Xicotencatl-Munoz \
+Enter patient ID to open file: 2590972 \
 Opening: PatientData/XI/AB/197905/2590972_XICOTENCATL-MUNOZ_ABRAHAM_59114785_Appointment_2018_08_09.pdf
 
 3. Run the GUI
 
-`python src/gui.py`
+`python src/gui.py` \
 Features:
 
-Search box to look up patients by MRN or name.
-Results displayed in a table.
-Double-click a patient → opens a pop-up listing all their associated PDFs.
-Select a file → it opens in the system’s default PDF viewer.
+Search box to look up patients by MRN or name. \
+Results displayed in a table. \
+Double-click a patient → opens a pop-up listing all their associated PDFs. \
+Select a file → it opens in the system’s default PDF viewer. \
 
 ---
 
 ### Database
-Uses SQLite (patients.db) as the backend.
+Uses SQLite (patients.db) as the backend. \
 
-Table schema:
+Table schema: 
 
 CREATE TABLE patients( \
         id INTEGER PRIMARY KEY AUTOINCREMENT, \
@@ -95,7 +95,7 @@ CREATE TABLE patients( \
 The path field holds all PDF file paths for each patient, separated by ;.
 
 
-**Parallelized Ingestion**
+### Parallelized Ingestion
 This project uses parallel batch ingestion to dramatically speed up loading patient records from CSV into SQLite.
 
 How it works:
@@ -112,8 +112,8 @@ Parses its batch of rows.
 Looks up file paths from a prebult in-memory index.
 Inserts the rows into SQlite using executemany(...).
 
-SQLite Handling:
-Each worker opens its own SQLite connection.
-SQLite serializes the actual writes internally, but CPU-bound work (row prep, lookups) happens fully in parallel.
-This keeps all CPU cores busy while avoiding database corruption.
+SQLite Handling: \
+Each worker opens its own SQLite connection. \
+SQLite serializes the actual writes internally, but CPU-bound work (row prep, lookups) happens fully in parallel. \
+This keeps all CPU cores busy while avoiding database corruption. \
 
