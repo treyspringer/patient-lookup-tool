@@ -160,14 +160,6 @@ def find_patient_pdfs(pid, name, ssn, sex, bdate, addr):
     return (pid, name, ssn, sex, bdate, addr, all_paths)
 
 
-"""
-# Benchmark CSV ingestion
-start_time = time.perf_counter()
-ingest_csv()
-end_time = time.perf_counter()
-print(f"CSV ingestion took {end_time - start_time:.4f} seconds")
-"""
-
 def benchmark(func, *args, **kwargs):
     """Utility to time any function call."""
     start = time.perf_counter()
@@ -191,41 +183,31 @@ def search_patient(query):
     return rows
 
 
-def open_file(pid):
-    """Open the first matching file for a given patient ID from the database."""
-    conn = sqlite3.connect("patients.db")
+def open_file(patient_id):
+    """Open all PDF file paths for the given patient MRN."""
+    conn = sqlite3.connect(DB)
     cur = conn.cursor()
-    cur.execute("SELECT path FROM patients WHERE id = ?",(pid,))
+    cur.execute("SELECT path FROM patients WHERE patient_id = ?", (patient_id,))
     row = cur.fetchone()
     conn.close()
 
-    #if not row or not row[0]:
-        #print(f"No file paths found for this patient")
-    
-    # split the semicolon-separated string into individual paths
+    if row is None or row[0] is None:
+        print(f"No file paths found for patient MRN {patient_id}")
+        return
+
     paths = row[0].split(";")
+    pdfs = [p.strip() for p in paths if p.strip().lower().endswith(".pdf")]
 
-    # Open for each pdf
-    for p in paths:
-        p = p.strip()
-        if os.path.exists(p):
-            print(f"Opening {p}...")
-            os.startfile(p) # Windows only
+    if not pdfs:
+        print(f"No PDFs found for patient MRN {patient_id}")
+        return
+
+    for pdf in pdfs:
+        if os.path.exists(pdf):
+            os.startfile(pdf)
+            print(f"Opened: {pdf}")
         else:
-            print(f"File path does not exist: {p}")
-
-
-    """
-    # Open file in default application
-    if platform.system() == "Windows":
-        os.startfile(file_path)
-    elif platform.system() == "Darwin":
-        subprocess.run(["open", file_path])
-    else:
-        subprocess.run(["xdg-open", file_path])
-
-    conn.close()
-    """
+            print(f"Missing file on disk: {pdf}")
 
 
 def update_paths(db_path, file_index):
