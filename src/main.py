@@ -9,7 +9,6 @@ import csv, sqlite3, os, time, logging
 
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-
 # Path constants
 DB = "patients.db" # SQLite database file
 CSV_FILE = os.path.join("data","patients_sample.csv")
@@ -94,10 +93,10 @@ def build_file_index(root_dirs):
     return index
 
 
-
 def find_pdfs_for_patient(patient_id, file_index):
     """Return UNC paths for all PDFs matching this patient ID."""
     return [f"\\\\server\\share\\{path}" for path in file_index.get(patient_id, [])]
+
 
 def ingest_csv(csv_path, db_path, file_index, batch_size=500):
     """Insert CSV rows into SQLite with placeholder path (filled later)."""
