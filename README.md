@@ -115,3 +115,13 @@ Each worker opens its own SQLite connection. \
 SQLite serializes the actual writes internally, but CPU-bound work (row prep, lookups) happens fully in parallel. \
 This keeps all CPU cores busy while avoiding database corruption. 
 
+### Building the Application
+To build the app:
+First do pip install pyinstaller (if needed) \
+Then do pyinstaller --onefile --windowed --icon=app.ico src/gui.py \
+
+Build is sent to Patient_Lookup_Tool/dist be default.
+Just put DB file inside /dist to use
+
+### Future Work
+More detailed logging for read/writes
