@@ -2,7 +2,7 @@
 # This file reads patients_sample.csv, stores relevant fields
 # into SQLite, lets you search by patient name or ID, and builds
 # a UNC string
-# Author: Trey Springer (8/25/2025 last update)
+# Author: Trey Springer (9/17/2025 last update)
 # -------------------------------------------------------------------
 
 import csv, sqlite3, os, time, logging
